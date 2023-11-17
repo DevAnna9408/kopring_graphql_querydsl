@@ -16,5 +16,6 @@ type User {
 }
 
 type Query {
-    findAllUsers: [User]
+    findAllUsers: [User],
+    findByUserId(userId: String!): User
 }

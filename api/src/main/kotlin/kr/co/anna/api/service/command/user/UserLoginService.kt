@@ -21,12 +21,9 @@ import org.springframework.transaction.annotation.Transactional
 class UserLoginService(
     private val authManager: AuthenticationManager,
     private val jwtGenerator: JwtGenerator,
-    private val userRepository: UserRepository,
-    @Value("\${login.failMaxCnt}")
-    private val failMaxCnt: Int
+    private val userRepository: UserRepository
 
     ) {
-    //비민번호 틀렸을 경우는 Update가 이루어져야 하므로 예외처리
     @Transactional(noRollbackFor = [BadCredentialsException::class])
     fun login(signIn: SignInIn): SignInOut {
         val authenticate: Authentication = try {
@@ -35,20 +32,13 @@ class UserLoginService(
             throw  InternalAuthenticationServiceException(MessageUtil.getMessage("USER_NOT_FOUND"))
         } catch (e: DisabledException) {  // 유효한 회원이 아님
             throw  DisabledException(MessageUtil.getMessage("LOGIN_FAIL"))
-        } catch (e: BadCredentialsException) {
-            this.failPassword(signIn.userId)
-            throw  BadCredentialsException(MessageUtil.getMessage("INCORRECT_PASSWORD"))
         } catch (e: LockedException) {    // 계정 잠김
             throw  LockedException(MessageUtil.getMessage("ADDITIONAL_AUTH"))
         } catch (e: UnauthenticatedAccessException) {
-            throw  UnauthenticatedAccessException();
+            throw  UnauthenticatedAccessException()
         }
         val signInUser = authenticate.principal as SignInUser
         return SignInOut.from(signInUser, jwtGenerator.generateUserToken(signInUser))
     }
 
-    fun failPassword(userId:String) {
-        val dbUser = userRepository.getByUserId(userId)
-        dbUser.checkLock(failMaxCnt)
-    }
 }

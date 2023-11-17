@@ -25,7 +25,7 @@ class SignController(
 ) {
     @Operation(summary = "회원 가입")
     @PostMapping("/sign-up")
-    fun createMember(@RequestBody signUpIn: SignUpIn): ResponseEntity<UserSimpleOut> {
+    fun createMember(@RequestBody signUpIn: SignUpIn): ResponseEntity<UserOut> {
         val memberOut = userCommandService.createUser(signUpIn)
         return ResponseEntity.ok(memberOut)
     }
@@ -37,30 +37,12 @@ class SignController(
         return ResponseEntity.ok(userLoginService.login(signIn))
     }
 
-    @Operation(summary = "비밀번호 찾기")
-    @GetMapping("/find/password")
-    fun findPassword(@RequestParam userId: String, @RequestParam email: String) {
-        userCommandService.findPassword(userId, email)
-    }
-
-    @Operation(summary = "초기 비밀번호 변경")
-    @PatchMapping("/{oid}/change-init-password")
-    fun changeInitPassword(
-        @PathVariable("oid") oid: Long,
-        @RequestBody passwordIn: PasswordIn
-    ): ResponseEntity<Nothing> {
-        SecurityUtil.checkUserOid(oid)
-        userCommandService.changePassword(oid, passwordIn)
-        return ResponseEntity.noContent().build()
-    }
-
     @Operation(summary = "역할 목록 조회")
     @GetMapping("/roles")
     fun getRoles(): ResponseEntity<Map<String, List<EnumValue>?>> {
         return ResponseEntity.ok(enumMapper["ROLE"])
         // return ResponseEntity.ok(Role.values().map { EnumValue(it) })
     }
-
 
     @Operation(summary = "이메일, 아이디 중복체크")
     @GetMapping("/sign-up/check")

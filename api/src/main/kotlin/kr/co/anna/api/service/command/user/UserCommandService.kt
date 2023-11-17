@@ -16,14 +16,8 @@ import java.time.format.DateTimeFormatter
 class UserCommandService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
-
-    @org.springframework.beans.factory.annotation .Value("\${front.url}")
-    private val frontUrl: String,
-
-
-    private val jwtGenerator: JwtGenerator,
 ) {
-    fun createUser(signUpIn: SignUpIn): UserSimpleOut {
+    fun createUser(signUpIn: SignUpIn): UserOut {
         val user: User = try {
             userRepository.save(signUpIn.toEntity(passwordEncoder))
         } catch (e: DataIntegrityViolationException) {
@@ -37,52 +31,8 @@ class UserCommandService(
                 else -> throw RuntimeException(defaultMsg)
             }
         }
-        return UserSimpleOut.fromEntity(user)
+        return UserOut.fromEntity(user)
     }
-
-    fun saveUser(oid: Long, userUpdateIn: UserUpdateIn): UserSimpleOut {
-        val dbUser = userRepository.getByOid(oid)
-        dbUser.updateWith(
-            User.NewValue(
-                name = userUpdateIn.name,
-                email = userUpdateIn.email,
-                password = passwordEncoder.encode(userUpdateIn.password),
-            )
-        )
-        return UserSimpleOut.fromEntity(dbUser)
-    }
-
-    fun changePassword(oid: Long, passwordIn: PasswordIn) {
-        val dbUser = userRepository.getByOid(oid)
-        dbUser.changePassword(passwordEncoder.encode(passwordIn.newPassword))
-    }
-
-    fun resetPassword(oid: Long): String {
-        val dbUser = userRepository.getByOid(oid)
-        val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-        val initPassword = (1..7)
-            .map { charPool.random() }
-            .joinToString("")
-        dbUser.changePassword(passwordEncoder.encode(initPassword))
-        return initPassword
-    }
-
-    /**
-     * 비밀번호 찾기
-     *
-     * @param userId
-     * @param email
-     */
-    fun findPassword(userId: String, email: String) {
-        val user = userRepository.getByUserIdAndEmail(userId, email)
-    }
-
-    fun unlockUser(userId: String): UserOut {
-        val dbUser = userRepository.getByUserId(userId)
-        dbUser.unlock()
-        return UserOut.fromEntity(dbUser)
-    }
-
 
     fun isUseUserEmail(email: String): Boolean {
         return userRepository.findByEmail(email).isPresent

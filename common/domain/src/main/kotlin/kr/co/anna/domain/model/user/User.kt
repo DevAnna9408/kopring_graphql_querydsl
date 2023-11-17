@@ -21,7 +21,7 @@ class User(
     oid: Long? = null, //pk
 
     @Column(name = "USER_ID")
-    val userId: String, //수정불가
+    private val userId: String,
 
     @Column(name = "NAME")
     private var name: String,
@@ -40,13 +40,14 @@ class User(
     @Column(name = "STATUS")
     private var status: Status = Status.ACTIVE, // 사용자 상태 코드
 
-    @Column(name = "FAIL_CNT")
-    var failCnt: Int = 0,// 로그인 실패횟수
-
-    @Column(name = "LOCK_YN")
-    private var locked: Boolean = false//계정잠김
-
 ) : kr.co.anna.domain._common.AbstractEntity(oid) {
+
+    fun name() = name
+    fun email() = email
+    fun password() = password
+    fun status() = status
+    fun role() = roles
+    fun userId() = userId
 
     enum class Status(private val korName: String, private val engName: String) : EnumModel {
 
@@ -71,19 +72,14 @@ class User(
         this.password = password
     }
 
-
     fun updateWith(n: NewValue) {
         if (!n.name.isNullOrBlank()) this.name = n.name
         if (!n.email.isNullOrBlank()) this.email = n.email
         if (!n.password.isNullOrBlank()) this.password = n.password
         this.status = n.status
-        this.failCnt = n.failCnt
-        this.locked = n.locked
         this.roles = n.roles
 
-
     }
-
 
     data class NewValue(
         val name: String? = null,
@@ -95,27 +91,8 @@ class User(
         val locked: Boolean = false
     )
 
-    fun name() = name
-    fun email() = email
-    fun password() = password
-    fun status() = status
-    fun failCnt() = failCnt
-    fun locked() = locked
-    fun role() = roles
     fun checkActiveUser(): Boolean {
         return status().equals(Status.ACTIVE)
     }
 
-    fun unlock() {
-        this.failCnt = 0
-        this.locked = false
-    }
-
-    // 캡챠
-    fun checkLock (failMaxCnt: Int)  {
-        this.failCnt += 1
-        if (this.failCnt > failMaxCnt) {
-            this.locked = true
-        }
-    }
 }

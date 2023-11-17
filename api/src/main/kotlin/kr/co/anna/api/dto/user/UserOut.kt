@@ -12,7 +12,7 @@ data class UserOut(
         fun fromEntity(e: User): UserOut {
             return UserOut(
                 oid = e.oid!!,
-                userId = e.userId,
+                userId = e.userId(),
                 name = e.name(),
                 email = e.email(),
             )

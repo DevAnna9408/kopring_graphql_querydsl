@@ -17,7 +17,7 @@ class SignInUser(
     }
 
     override fun getUsername(): String {
-        return user.userId
+        return user.userId()
     }
 
     override fun isAccountNonExpired(): Boolean {
@@ -25,7 +25,7 @@ class SignInUser(
     }
 
     override fun isAccountNonLocked(): Boolean {
-        return !user.locked()
+        return true
     }
 
     override fun isCredentialsNonExpired(): Boolean {
@@ -40,6 +40,5 @@ class SignInUser(
     fun email() = user.email()
     fun userOid() = user.oid
     fun roles() = user.role()
-    fun status() = user.status()
 
 }
