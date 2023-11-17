@@ -1,0 +1,76 @@
+spring:
+  profiles:
+    include:
+      - domain
+      - lib
+  servlet.multipart:
+    max-file-size:  20MB
+    max-request-size:  20MB
+
+jwt:
+  base64EncodedSecret: eyJzdWIiOiJBbm5hIENsZWFuIFByb2plY3QiLCJuYW1lIjoiRGV2IEFubmEiLCJhZG1pbiI6dHJ1ZX0
+  tokenDurationHr: 24
+  swaggerTokenDurationHr: 24
+  generator.enabled: true
+
+login.failMaxCnt: 5 # 로그인 실패 횟수
+
+front.url: http://localhost:3000
+
+logging:
+  level:
+    ROOT: warn
+    kr.co.anna: debug
+    p6spy: info
+
+
+--- # develop
+spring:
+  config:
+    activate:
+      on-profile: "develop"
+
+logging:
+  level:
+    root: ERROR
+    p6spy: info
+    org.hibernate.SQL : ERROR
+  pattern:
+    console: "[%highlight(%-5level) %d{yyyy-MM-dd HH:mm:ss} ] %msg | %X{userId} |%X{errCode}%n"
+
+--- # test모드
+spring:
+  config:
+    activate:
+      on-profile: "test"
+
+logging:
+  level:
+    root: ERROR
+  pattern:
+    console: "{\"time\": \"%d{yyyy-MM-dd HH:mm:ss}\",\"message\": %msg,\"userId\": \"%X{userId}\",\"errCode\": \"%X{errCode}\"}%n"
+
+front.url:
+
+--- # product 운영모드
+spring:
+  config:
+    activate:
+      on-profile: "product"
+
+
+logging:
+  level:
+    root: ERROR
+  pattern:
+    console: "{\"time\": \"%d{yyyy-MM-dd HH:mm:ss}\",\"message\": %msg,\"userId\": \"%X{userId}\",\"errCode\": \"%X{errCode}\"}%n"
+
+
+front.url:
+
+
+--- # initdb
+spring:
+  config:
+    activate:
+      on-profile: "initdb"

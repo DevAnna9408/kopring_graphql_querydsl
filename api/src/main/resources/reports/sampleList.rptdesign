@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <text-property name="displayName">평가위원 서류심사평가서</text-property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">120</property>
+    <parameters>
+        <scalar-parameter name="admsYear" id="1601">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="admsSemester" id="1600">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="evalCourseName" id="1365">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="evalDeptName" id="1531">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="evaluatorName" id="1614">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="DataSource_eval" id="1535"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="evalList" id="1536">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">applicantNo</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">applicantName</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">obtainScore1</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">obtainScore2</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">obtainScore3</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">obtainScore4</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">obtainScore5</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">obtainScore6</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">totalPoint</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">remark</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">applicantNo</property>
+                    <text-property name="displayName">applicantNo</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">applicantName</property>
+                    <text-property name="displayName">applicantName</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">obtainScore1</property>
+                    <text-property name="displayName">obtainScore1</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">obtainScore2</property>
+                    <text-property name="displayName">obtainScore2</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">obtainScore3</property>
+                    <text-property name="displayName">obtainScore3</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">obtainScore4</property>
+                    <text-property name="displayName">obtainScore4</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">obtainScore5</property>
+                    <text-property name="displayName">obtainScore5</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">obtainScore6</property>
+                    <text-property name="displayName">obtainScore6</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">totalPoint</property>
+                    <text-property name="displayName">totalPoint</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">remark</property>
+                    <text-property name="displayName">remark</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">applicantNo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">applicantName</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">obtainScore1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">obtainScore2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">obtainScore3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">obtainScore4</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">obtainScore5</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">obtainScore6</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">totalPoint</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">remark</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">DataSource_eval</property>
+            <method name="open"><![CDATA[//System.out.println('### open of Data Set ###');
+var appContext = reportContext.getAppContext();
+evalListData = appContext.get("evalListData");
+iterator = evalListData.iterator();]]></method>
+            <method name="fetch"><![CDATA[//System.out.println('### Fetch of Data Set ###');
+var i = 0;
+if (iterator.hasNext()) {
+	var evalItem = iterator.next();
+	row['applicantNo'] = evalItem.getApplicantNo();
+	row['applicantName'] = evalItem.getApplicantName();
+	row['obtainScore1'] = "10";
+	row['obtainScore2'] = "10";
+	row['obtainScore3'] = "";
+	row['obtainScore4'] = "";
+	row['obtainScore5'] = "";
+	row['obtainScore6'] = "";
+	row['totalPoint'] = evalItem.getTotalPoint();
+	row['remark'] = evalItem.getRemark();
+
+    return true;
+} else return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="NewSimpleMasterPage" id="1520">
+            <property name="type">a4</property>
+            <property name="orientation">landscape</property>
+            <property name="topMargin">0.5cm</property>
+            <property name="leftMargin">1.1cm</property>
+            <property name="bottomMargin">0.5cm</property>
+            <property name="rightMargin">1.1cm</property>
+            <property name="headerHeight">1.5cm</property>
+            <property name="footerHeight">3cm</property>
+            <page-header>
+                <grid id="6">
+                    <property name="height">1.5cm</property>
+                    <property name="width">27.5cm</property>
+                    <list-property name="boundDataColumns">
+                        <structure>
+                            <property name="name">admsGubun</property>
+                            <text-property name="displayName">admsGubun</text-property>
+                            <expression name="expression" type="javascript">params["admsYear"].value + new String("-") + params["admsSemester"].value;</expression>
+                            <property name="dataType">string</property>
+                            <property name="allowExport">true</property>
+                        </structure>
+                    </list-property>
+                    <column id="73">
+                        <property name="width">2cm</property>
+                    </column>
+                    <column id="76">
+                        <property name="width">2.3cm</property>
+                    </column>
+                    <column id="7">
+                        <property name="width">3.7cm</property>
+                    </column>
+                    <column id="8"/>
+                    <column id="1602">
+                        <property name="width">3.7cm</property>
+                    </column>
+                    <column id="638">
+                        <property name="width">2.3cm</property>
+                    </column>
+                    <column id="38">
+                        <property name="width">2cm</property>
+                    </column>
+                    <row id="14">
+                        <property name="fontFamily">sans-serif</property>
+                        <property name="verticalAlign">middle</property>
+                        <cell id="71">
+                            <property name="textAlign">right</property>
+                        </cell>
+                        <cell id="74">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="15"/>
+                        <cell id="16">
+                            <label id="22">
+                                <property name="fontFamily">sans-serif</property>
+                                <property name="fontSize">12pt</property>
+                                <property name="textAlign">center</property>
+                                <text-property name="text">1. 서 류 심 사 평 가 서 </text-property>
+                            </label>
+                        </cell>
+                        <cell id="1603">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <property name="verticalAlign">middle</property>
+                            <label id="23">
+                                <property name="fontSize">11pt</property>
+                                <property name="fontWeight">bold</property>
+                                <text-property name="text">학과 작성 및 보관서류(10년간)</text-property>
+                            </label>
+                        </cell>
+                        <cell id="36">
+                            <data id="429">
+                                <property name="paddingRight">3pt</property>
+                                <property name="textAlign">right</property>
+                                <method name="onRender"><![CDATA[this.setDisplayValue(pageNumber + " /  " + totalPage);]]></method>
+                            </data>
+                        </cell>
+                    </row>
+                    <row id="18">
+                        <property name="fontFamily">sans-serif</property>
+                        <property name="verticalAlign">middle</property>
+                        <property name="height">0.7cm</property>
+                        <cell id="72">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <data id="80">
+                                <property name="paddingLeft">5pt</property>
+                                <list-property name="boundDataColumns">
+                                    <structure>
+                                        <property name="name">evalCourseName</property>
+                                        <expression name="expression" type="javascript">params["evalCourseName"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                </list-property>
+                                <property name="resultSetColumn">evalCourseName</property>
+                            </data>
+                        </cell>
+                        <cell id="19">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <data id="78">
+                                <property name="paddingLeft">10pt</property>
+                                <list-property name="boundDataColumns">
+                                    <structure>
+                                        <property name="name">evalDeptName</property>
+                                        <expression name="expression" type="javascript">params["evalDeptName"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                </list-property>
+                                <property name="resultSetColumn">evalDeptName</property>
+                            </data>
+                        </cell>
+                        <cell id="21"/>
+                        <cell id="637"/>
+                        <cell id="37">
+                            <data id="29">
+                                <property name="fontSize">9pt</property>
+                                <property name="paddingRight">3pt</property>
+                                <property name="textAlign">right</property>
+                                <property name="resultSetColumn">admsGubun</property>
+                            </data>
+                        </cell>
+                    </row>
+                </grid>
+            </page-header>
+            <page-footer>
+                <grid id="40">
+                    <property name="marginTop">0.5cm</property>
+                    <property name="width">27.5cm</property>
+                    <column id="41"/>
+                    <column id="42">
+                        <property name="width">2.7cm</property>
+                    </column>
+                    <column id="621">
+                        <property name="width">1cm</property>
+                    </column>
+                    <column id="615">
+                        <property name="width">2cm</property>
+                    </column>
+                    <column id="627">
+                        <property name="width">1cm</property>
+                    </column>
+                    <column id="624">
+                        <property name="width">1cm</property>
+                    </column>
+                    <column id="634">
+                        <property name="width">1cm</property>
+                    </column>
+                    <column id="618">
+                        <property name="width">1cm</property>
+                    </column>
+                    <column id="641">
+                        <property name="width">0.5cm</property>
+                    </column>
+                    <row id="44">
+                        <property name="fontFamily">sans-serif</property>
+                        <property name="height">0.3in</property>
+                        <cell id="45">
+                            <property name="colSpan">1</property>
+                            <property name="rowSpan">2</property>
+                            <text id="60">
+                                <property name="fontFamily">sans-serif</property>
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[()안은 학과에서 정한 배점입니다.
+지정항목 외에는 학과에서 정해진 해당항목입니다.
+평가교수별로 기호  (1,2,3...)를 정해 [교수기호]란에 기입하여 주십시오.]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="46">
+                            <property name="verticalAlign">middle</property>
+                        </cell>
+                        <cell id="619">
+                            <property name="verticalAlign">middle</property>
+                            <label id="628">
+                                <text-property name="text">년</text-property>
+                            </label>
+                        </cell>
+                        <cell id="613">
+                            <property name="verticalAlign">middle</property>
+                        </cell>
+                        <cell id="625">
+                            <property name="verticalAlign">middle</property>
+                            <label id="629">
+                                <text-property name="text">월</text-property>
+                            </label>
+                        </cell>
+                        <cell id="622">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <property name="verticalAlign">middle</property>
+                        </cell>
+                        <cell id="616">
+                            <property name="verticalAlign">middle</property>
+                            <label id="630">
+                                <text-property name="text">일</text-property>
+                            </label>
+                        </cell>
+                        <cell id="639">
+                            <property name="verticalAlign">middle</property>
+                        </cell>
+                    </row>
+                    <row id="48">
+                        <property name="fontFamily">sans-serif</property>
+                        <cell id="50">
+                            <property name="verticalAlign">middle</property>
+                            <label id="59">
+                                <property name="paddingRight">10pt</property>
+                                <property name="textAlign">right</property>
+                                <text-property name="text">평 가 교 수 명</text-property>
+                            </label>
+                        </cell>
+                        <cell id="620">
+                            <property name="colSpan">4</property>
+                            <property name="rowSpan">1</property>
+                            <property name="verticalAlign">middle</property>
+                            <data id="635">
+                                <list-property name="boundDataColumns">
+                                    <structure>
+                                        <property name="name">evaluatorName</property>
+                                        <expression name="expression" type="javascript">params["evaluatorName"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                </list-property>
+                                <property name="resultSetColumn">evaluatorName</property>
+                            </data>
+                        </cell>
+                        <cell id="633">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <property name="textAlign">center</property>
+                            <property name="verticalAlign">middle</property>
+                            <label id="631">
+                                <text-property name="text">(인)</text-property>
+                            </label>
+                        </cell>
+                        <cell id="640">
+                            <property name="textAlign">center</property>
+                            <property name="verticalAlign">middle</property>
+                        </cell>
+                    </row>
+                </grid>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="1615">
+            <property name="dataSet">evalList</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">applicantNo</property>
+                    <text-property name="displayName">applicantNo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["applicantNo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">applicantName</property>
+                    <text-property name="displayName">applicantName</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["applicantName"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">obtainScore1</property>
+                    <text-property name="displayName">obtainScore1</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["obtainScore1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">obtainScore2</property>
+                    <text-property name="displayName">obtainScore2</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["obtainScore2"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">obtainScore3</property>
+                    <text-property name="displayName">obtainScore3</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["obtainScore3"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">obtainScore4</property>
+                    <text-property name="displayName">obtainScore4</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["obtainScore4"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">obtainScore5</property>
+                    <text-property name="displayName">obtainScore5</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["obtainScore5"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">obtainScore6</property>
+                    <text-property name="displayName">obtainScore6</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["obtainScore6"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">totalPoint</property>
+                    <text-property name="displayName">totalPoint</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["totalPoint"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">remark</property>
+                    <text-property name="displayName">remark</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["remark"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1669">
+                <property name="width">2.4cm</property>
+            </column>
+            <column id="1670">
+                <property name="width">3.5cm</property>
+            </column>
+            <column id="1671">
+                <property name="width">2.65cm</property>
+            </column>
+            <column id="1672">
+                <property name="width">2.65cm</property>
+            </column>
+            <column id="1673">
+                <property name="width">2.65cm</property>
+            </column>
+            <column id="1674">
+                <property name="width">2.65cm</property>
+            </column>
+            <column id="1675">
+                <property name="width">2.65cm</property>
+            </column>
+            <column id="1676">
+                <property name="width">2.65cm</property>
+            </column>
+            <column id="1677">
+                <property name="width">2.2cm</property>
+            </column>
+            <column id="1678"/>
+            <header>
+                <row id="1616">
+                    <property name="fontFamily">sans-serif</property>
+                    <property name="verticalAlign">middle</property>
+                    <property name="height">1cm</property>
+                    <cell id="1617">
+                        <property name="colSpan">1</property>
+                        <property name="rowSpan">2</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1618">
+                            <text-property name="text">수험번호</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1619">
+                        <property name="colSpan">1</property>
+                        <property name="rowSpan">2</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1620">
+                            <text-property name="text">성   명</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1621">
+                        <property name="colSpan">6</property>
+                        <property name="rowSpan">1</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="651">
+                            <text-property name="text">평   가   점   수 [ 200점 만점 ]&#13;(아래의 괄호안은 배점)</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1633">
+                        <property name="colSpan">1</property>
+                        <property name="rowSpan">2</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1634">
+                            <text-property name="text">평가총점</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1635">
+                        <property name="colSpan">1</property>
+                        <property name="rowSpan">2</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1636">
+                            <text-property name="text">비고</text-property>
+                        </label>
+                    </cell>
+                </row>
+                <row id="1679">
+                    <property name="fontFamily">sans-serif</property>
+                    <property name="verticalAlign">middle</property>
+                    <property name="height">1cm</property>
+                    <cell id="1682">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1622">
+                            <text-property name="text">obtainScore1</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1683">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1624">
+                            <text-property name="text">obtainScore2</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1684">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1626">
+                            <text-property name="text">obtainScore3</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1685">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1628">
+                            <text-property name="text">obtainScore4</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1686">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1630">
+                            <text-property name="text">obtainScore5</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1687">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <label id="1632">
+                            <text-property name="text">obtainScore6</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="1637">
+                    <property name="fontFamily">sans-serif</property>
+                    <property name="textAlign">center</property>
+                    <property name="verticalAlign">middle</property>
+                    <cell id="1638">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1639">
+                            <property name="resultSetColumn">applicantNo</property>
+                        </data>
+                    </cell>
+                    <cell id="1640">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1641">
+                            <property name="paddingLeft">2pt</property>
+                            <property name="paddingRight">2pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">applicantName</property>
+                        </data>
+                    </cell>
+                    <cell id="1642">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1643">
+                            <property name="resultSetColumn">obtainScore1</property>
+                        </data>
+                    </cell>
+                    <cell id="1644">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1645">
+                            <property name="resultSetColumn">obtainScore2</property>
+                        </data>
+                    </cell>
+                    <cell id="1646">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1647">
+                            <property name="resultSetColumn">obtainScore3</property>
+                        </data>
+                    </cell>
+                    <cell id="1648">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1649">
+                            <property name="resultSetColumn">obtainScore4</property>
+                        </data>
+                    </cell>
+                    <cell id="1650">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1651">
+                            <property name="resultSetColumn">obtainScore5</property>
+                        </data>
+                    </cell>
+                    <cell id="1652">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1653">
+                            <property name="resultSetColumn">obtainScore6</property>
+                        </data>
+                    </cell>
+                    <cell id="1654">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1655">
+                            <property name="resultSetColumn">totalPoint</property>
+                        </data>
+                    </cell>
+                    <cell id="1656">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1657">
+                            <property name="paddingLeft">2pt</property>
+                            <property name="paddingRight">2pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">remark</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+        </table>
+    </body>
+</report>

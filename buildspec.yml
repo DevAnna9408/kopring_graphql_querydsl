@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - echo Build Starting on `date`
+      - chmod +x ./gradlew
+      - ./gradlew clean
+      - ./gradlew :api:bootJar
+  post_build:
+    commands:
+      - echo $(basename ./api/build/libs/api-0.0.1-SNAPSHOT.jar)
+      - pwd
+      - cp -r ./api/build/resources/main/.platform ./api/build/libs/
+      - cp -r ./api/build/resources/main/.ebextensions ./api/build/libs/
+artifacts:
+  files:
+    - '**/*'
+  base-directory: api/build/libs

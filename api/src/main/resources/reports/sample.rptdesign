@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.6.0.v201606072122</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">120</property>
+    <parameters>
+        <scalar-parameter name="testVal1" id="29">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <text-data id="4">
+            <expression name="valueExpr">&lt;html>&#13;
+버트 샘플문서입니다. &lt;br/>&#13;
+&lt;/html></expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <grid id="38">
+            <property name="marginTop">0pt</property>
+            <property name="marginLeft">0pt</property>
+            <property name="marginBottom">0pt</property>
+            <property name="width">7.958333333333333in</property>
+            <column id="39">
+                <property name="width">4.008333333333334in</property>
+            </column>
+            <column id="40"/>
+            <row id="41">
+                <cell id="42">
+                    <label id="37">
+                        <property name="paddingTop">5pt</property>
+                        <property name="paddingLeft">5pt</property>
+                        <property name="paddingBottom">5pt</property>
+                        <property name="paddingRight">5pt</property>
+                        <text-property name="text">테스트 입력값 : </text-property>
+                    </label>
+                </cell>
+                <cell id="43">
+                    <data id="36">
+                        <property name="paddingTop">5pt</property>
+                        <property name="paddingLeft">5pt</property>
+                        <property name="paddingBottom">5pt</property>
+                        <property name="paddingRight">5pt</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">testVal1</property>
+                                <expression name="expression" type="javascript">params["testVal1"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">testVal1</property>
+                    </data>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>
