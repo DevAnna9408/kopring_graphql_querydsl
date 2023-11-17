@@ -6,7 +6,7 @@ import kr.co.anna.domain.repository.user.UserRepository
 import org.springframework.stereotype.Component
 
 @Component
-class UserResolver (
+class UserQuery (
 
     private val userRepository: UserRepository
 

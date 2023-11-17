@@ -1,9 +1,6 @@
 schema {
-    query: Query
-}
-
-type Role {
-    code: String!
+    query: Query,
+    mutation: Mutation
 }
 
 type User {
@@ -15,7 +12,18 @@ type User {
     status: String!
 }
 
+input SignUpIn {
+    userId: String!,
+    name: String!,
+    email: String!,
+    password: String!
+}
+
 type Query {
     findAllUsers: [User],
     findByUserId(userId: String!): User
+}
+
+type Mutation {
+    createUser(signUpIn: SignUpIn): User
 }
