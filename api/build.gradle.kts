@@ -22,7 +22,6 @@ configurations {
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
@@ -50,7 +49,11 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
-    testImplementation("org.springframework.security:spring-security-test")
+
+    // GraphQl
+    implementation("com.graphql-java:graphql-spring-boot-starter:5.0.2")
+    implementation("com.graphql-java:graphql-java-tools:5.2.4")
+    implementation("com.graphql-java-kickstart:playground-spring-boot-starter:5.10.0")
 
 
 }

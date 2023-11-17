@@ -49,14 +49,6 @@ dependencies {
     implementation("com.querydsl:querydsl-jpa:5.0.0")
     kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
 
-    // GraphQl
-    implementation("com.graphql-java:graphql-spring-boot-starter:5.0.2")
-    implementation("com.graphql-java:graphql-java-tools:5.2.4")
-    implementation("com.graphql-java-kickstart:playground-spring-boot-starter:5.10.0")
-
-    // lombok
-    annotationProcessor ("org.projectlombok:lombok")
-
 }
 
 tasks.withType<KotlinCompile> {

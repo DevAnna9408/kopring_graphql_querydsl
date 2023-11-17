@@ -1,4 +1,4 @@
-package kr.co.anna.domain.resolver.query.user
+package kr.co.anna.api.resolver.query.user
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import kr.co.anna.domain.model.user.User
