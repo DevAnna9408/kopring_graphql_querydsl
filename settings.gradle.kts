@@ -7,6 +7,6 @@
  * in the user manual at https://docs.gradle.org/7.0.2/userguide/multi_project_builds.html
  */
 
-rootProject.name = "kopring_clean"
+rootProject.name = "kopring_graphql_querydsl"
 include("common:domain", "common:lib")
 include("api")
