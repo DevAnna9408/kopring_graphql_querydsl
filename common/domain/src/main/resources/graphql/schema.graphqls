@@ -2,12 +2,19 @@ schema {
     query: Query
 }
 
-type NewMember {
+type Role {
+    code: String!
+}
+
+type User {
     oid: ID!,
     userId: String!,
-    password: String!
+    name: String!,
+    email: String!,
+    role: String!,
+    status: String!
 }
 
 type Query {
-    findAllNewMembers: [NewMember]
+    findAllUsers: [User]
 }
