@@ -180,6 +180,7 @@ class SecurityConfig(
     private fun devAllowedList(): Array<String> {
         return arrayOf(
             "/h2-console/**",
+            "/**"
         )
     }
 
