@@ -1,0 +1,14 @@
+type NewMember{
+    oid: ID!
+    userId: String!
+    password: String!
+}
+
+type Query{
+    getNewMemberByMemberOid(oid: ID!): NewMember
+    getAllNewMembers: [NewMember]
+}
+
+type Mutation{
+    save(userId: String!, password: String!): NewMember
+}
