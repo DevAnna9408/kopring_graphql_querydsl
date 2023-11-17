@@ -32,4 +32,20 @@ class UserMutation (
      **/
     fun createUser(signUpIn: SignUpIn) = userRepository.save(signUpIn.toEntity(passwordEncoder))
 
+    /**
+     * Http Method : Post
+     * Header: 'Content-Type: application/json'
+     * Body
+    {
+        "query": "mutation ($userOid: ID!) { deleteUserByUserOid(userOid: $userOid) }",
+            "variables": {
+            "userOid": Your Param
+        }
+    }
+     * * * * **/
+    fun deleteUserByUserOid(userOid: Long): Boolean {
+        userRepository.delete(userRepository.getByOid(userOid))
+        return true
+    }
+
 }

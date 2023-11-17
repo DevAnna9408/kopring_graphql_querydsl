@@ -25,5 +25,6 @@ type Query {
 }
 
 type Mutation {
-    createUser(signUpIn: SignUpIn): User
+    createUser(signUpIn: SignUpIn): User,
+    deleteUserByUserOid(userOid: ID!): Boolean
 }
