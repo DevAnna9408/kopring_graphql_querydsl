@@ -43,7 +43,7 @@ class P6SpyLogger : MessageFormattingStrategy {
 
     private fun sqlFormat(sql: String, category: String, message: String): String {
         var sql = sql
-        if (sql.trim { it <= ' ' } == null || sql.trim { it <= ' ' }.isEmpty()) {
+        if (sql.trim { it <= ' ' }.isEmpty()) {
             return ""
         }
         if (Category.STATEMENT.getName().equals(category)) {

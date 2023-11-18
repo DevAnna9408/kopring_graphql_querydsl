@@ -19,7 +19,7 @@ input UserUpdateIn {
 
 type Query {
     findAllUsers: [User],
-    findByUserId(userId: String!): User
+    getByUserId(userId: String!): User
 }
 
 type Mutation {

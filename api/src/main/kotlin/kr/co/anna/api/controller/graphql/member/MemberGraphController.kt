@@ -35,17 +35,16 @@ class MemberGraphController (
 
     /**
     {
-        "query": "query ($userId: String!) { findByUserId(userId: $userId) { oid, userId, name, email } }",
+        "query": "query ($userId: String!) { getByUserId(userId: $userId) { oid, userId, name, email } }",
             "variables": {
                 "userId": "userId"
             }
     }
      **/
     @QueryMapping
-    fun findByUserId(
+    fun getByUserId(
         @Argument userId: String
-    ) = userRepository.findByUserId(userId).get()
-
+    ) = userRepository.getByUserId(userId)
     /**
     {
         "query": "mutation ($signUpIn: SignUpIn!) { createUser(signUpIn: $signUpIn) { oid, userId, name, email } }",

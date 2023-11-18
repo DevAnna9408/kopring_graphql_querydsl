@@ -34,20 +34,4 @@ class UserCommandService(
         return UserOut.fromEntity(user)
     }
 
-    fun isUseUserEmail(email: String): Boolean {
-        return userRepository.findByEmail(email).isPresent
-    }
-
-    fun isUseUserId(userId: String): Boolean {
-        return userRepository.findByUserId(userId).isPresent
-    }
-
-    @Transactional(readOnly = true)
-    fun isUse(type: String, value: String?): Boolean? {
-        if (type == "userId")
-            return !isUseUserId(value!!)
-        else if (type == "email")
-            return !isUseUserEmail(value!!)
-        return true
-    }
 }

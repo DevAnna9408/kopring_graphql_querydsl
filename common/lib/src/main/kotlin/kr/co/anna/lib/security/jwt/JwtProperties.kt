@@ -3,7 +3,7 @@ package kr.co.anna.lib.security.jwt
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 
-@ConfigurationProperties(prefix = "jwt") //FIXME: YML과 매핑확인
+@ConfigurationProperties(prefix = "jwt")
 @ConstructorBinding
 data class JwtProperties (
     val base64EncodedSecret: String,  // JWT 생성/파싱에 사용하는 비밀키

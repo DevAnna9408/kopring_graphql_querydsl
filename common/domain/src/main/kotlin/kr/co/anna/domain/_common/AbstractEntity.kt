@@ -39,7 +39,7 @@ abstract class AbstractEntity(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as kr.co.anna.domain._common.AbstractEntity
+        other as AbstractEntity
 
         if (oid != other.oid) return false
 

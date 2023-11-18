@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse
 
 /**
  * Filter Chain 안에서 발생한 예외를 GlobalExceptionHandler 에서 처리할 수 있게 해주는 필터
- * Security Config 에 추가할 때 필터 체인 앞쪽에 놔야 더 넓은 범위의 필터 체인 커버 가능
+ * Security Config 에 추가할 때 필터 체인 앞쪽에 놓아야 더 넓은 범위의 필터 체인 커버 가능
  * 필터 체인 목록: https://docs.spring.io/spring-security/site/docs/current/reference/html5/#filter-stack
  */
 class ErrorResolvingFilter(

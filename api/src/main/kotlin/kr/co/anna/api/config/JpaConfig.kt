@@ -17,8 +17,8 @@ import java.util.*
  * 2개의 빈은 디비 테이블에 createdAt, createdBy 등 audit 정보를 자동으로 저장하는데 사용
  */
 @Configuration
-@EntityScan(basePackages = ["kr.co.anna.domain"])  // common.domain 까지 명시하면 에러 발생
-@EnableJpaRepositories(basePackages = ["kr.co.anna.domain"])  // common.domain 까지 명시하면 에러 발생
+@EntityScan(basePackages = ["kr.co.anna.domain"])
+@EnableJpaRepositories(basePackages = ["kr.co.anna.domain"])
 @EnableJpaAuditing(dateTimeProviderRef = "auditingDateTimeProvider")
 class JpaConfig {
 

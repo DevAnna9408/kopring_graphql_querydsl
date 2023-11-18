@@ -20,8 +20,7 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class UserLoginService(
     private val authManager: AuthenticationManager,
-    private val jwtGenerator: JwtGenerator,
-    private val userRepository: UserRepository
+    private val jwtGenerator: JwtGenerator
 
     ) {
     @Transactional(noRollbackFor = [BadCredentialsException::class])
@@ -32,8 +31,6 @@ class UserLoginService(
             throw  InternalAuthenticationServiceException(MessageUtil.getMessage("USER_NOT_FOUND"))
         } catch (e: DisabledException) {  // 유효한 회원이 아님
             throw  DisabledException(MessageUtil.getMessage("LOGIN_FAIL"))
-        } catch (e: LockedException) {    // 계정 잠김
-            throw  LockedException(MessageUtil.getMessage("ADDITIONAL_AUTH"))
         } catch (e: UnauthenticatedAccessException) {
             throw  UnauthenticatedAccessException()
         }

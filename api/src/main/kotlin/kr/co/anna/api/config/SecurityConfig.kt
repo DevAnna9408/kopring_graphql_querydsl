@@ -39,9 +39,6 @@ class SecurityConfig(
     private val userRepository: UserRepository,
 ) {
 
-    /**
-     * 규칙설정
-     */
     @Bean
     fun filterChain(http: HttpSecurity) : SecurityFilterChain {
         http
@@ -105,8 +102,6 @@ class SecurityConfig(
     fun corsConfigurationSource(): CorsConfigurationSource? {
         val configuration = CorsConfiguration()
         configuration.addAllowedOriginPattern("http://localhost:3040")
-        configuration.addAllowedOriginPattern("http://hello-gunpla-list.xyz")
-        configuration.addAllowedOriginPattern("https://hello-gunpla-list.xyz")
         configuration.addAllowedMethod("*")
         configuration.addAllowedHeader("*")
         configuration.allowCredentials = true
@@ -116,16 +111,6 @@ class SecurityConfig(
         source.registerCorsConfiguration("/**", configuration)
         return source
     }
-
-//    /**
-//     * 로그인 인증처리
-//     */
-//    @Bean
-//    fun configure(auth: AuthenticationManagerBuilder) {
-//        auth
-//            .userDetailsService(UserDetailsServiceImpl(userRepository))
-//            .passwordEncoder(passwordEncoder())
-//    }
 
     @Bean
     fun authenticationManager(
@@ -182,8 +167,7 @@ class SecurityConfig(
 
     private fun devAllowedList(): Array<String> {
         return arrayOf(
-            "/h2-console/**",
-            "/**"
+            "/h2-console/**"
         )
     }
 

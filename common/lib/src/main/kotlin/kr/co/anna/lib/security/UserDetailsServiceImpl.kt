@@ -11,7 +11,7 @@ class UserDetailsServiceImpl(
     private val userRepository: UserRepository,
 ) : UserDetailsService {
     override fun loadUserByUsername(userId: String?): UserDetails {
-        if (userId.isNullOrEmpty()) throw IllegalArgumentException("로그인 아이디가 비어있습니다.") //TODO: 다국어
+        if (userId.isNullOrEmpty()) throw IllegalArgumentException("로그인 아이디가 비어있습니다.")
         val user = userRepository.getByUserId(userId)
         return SignInUser(user)
     }

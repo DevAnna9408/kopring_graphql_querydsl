@@ -9,13 +9,5 @@ interface UserRepositoryCustom {
 
     fun getByOid(oid: Long): User
     fun getByUserId(userId: String) : User
-    fun getByEmail(email: String) : User
-    fun getByUserIdAndEmail(userId: String, email: String): User
-    fun searchUsers(
-        name: String?,
-        pageable: Pageable
-    ): Page<User>
-    fun findByUserId(userId: String): Optional<User>
-    fun findByEmail(email: String): Optional<User>
 
 }

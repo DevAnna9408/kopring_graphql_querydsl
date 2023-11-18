@@ -6,9 +6,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 /**
- * 개인정보 열람 정보 로깅
- * TODO: 프로젝트에 맞게 변경필요
- * CustomServletWrapperFilter 참고
+ * Spring Intercepter
  */
 class PersonalInfoLoggingInterceptor() : HandlerInterceptor {
 

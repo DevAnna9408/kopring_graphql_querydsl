@@ -36,12 +36,5 @@ object SecurityUtil {
         if (!authUser.roles.any { it.getCode().equals(Role.ROLE_MANAGER.getCode()) }) {
             throw AccessDeniedException(MessageUtil.getMessage("ROLE_NOT_FOUND"))
         }
-
     }
-
-    fun currentUserId(): String {
-        val authUser = authUser()
-        return authUser.userId
-    }
-
 }

@@ -36,20 +36,4 @@ class SignController(
         if (bindingResult.hasErrors()) throw InvalidException(MessageUtil.getMessage("INVALID_USER_INFO"), bindingResult)
         return ResponseEntity.ok(userLoginService.login(signIn))
     }
-
-    @Operation(summary = "역할 목록 조회")
-    @GetMapping("/roles")
-    fun getRoles(): ResponseEntity<Map<String, List<EnumValue>?>> {
-        return ResponseEntity.ok(enumMapper["ROLE"])
-        // return ResponseEntity.ok(Role.values().map { EnumValue(it) })
-    }
-
-    @Operation(summary = "이메일, 아이디 중복체크")
-    @GetMapping("/sign-up/check")
-    fun isUse(
-        @RequestParam type: String,
-        @RequestParam value: String
-    ): ResponseEntity<Boolean?>? {
-        return ResponseEntity.ok(this.userCommandService.isUse(type, value))
-    }
 }
