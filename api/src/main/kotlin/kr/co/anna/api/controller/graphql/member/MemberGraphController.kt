@@ -1,9 +1,15 @@
 package kr.co.anna.api.controller.graphql.member
 
+import kr.co.anna.api.dto.user.SignUpIn
+import kr.co.anna.api.dto.user.UserUpdateIn
 import kr.co.anna.domain.model.user.User
 import kr.co.anna.domain.repository.user.UserRepository
+import org.springframework.graphql.data.method.annotation.Argument
+import org.springframework.graphql.data.method.annotation.MutationMapping
 import org.springframework.graphql.data.method.annotation.QueryMapping
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Controller
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * Url: http://localhost:8080/graphql
@@ -11,9 +17,11 @@ import org.springframework.stereotype.Controller
  * Header: 'Content-Type : application/json'
  * **/
 @Controller
+@Transactional
 class MemberGraphController (
 
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val passwordEncoder: PasswordEncoder
 
         ) {
 
@@ -24,4 +32,59 @@ class MemberGraphController (
      **/
     @QueryMapping(value = "findAllUsers")
     fun findAllUsers(): List<User> = userRepository.findAll()
+
+    /**
+    {
+        "query": "mutation ($signUpIn: SignUpIn!) { createUser(signUpIn: $signUpIn) { oid, userId, name, email } }",
+            "variables": {
+                "signUpIn": {
+                    "userId": "newUserID",
+                    "name": "New User",
+                    "email": "newuser@example.com",
+                    "password": "NewPassword"
+            }
+        }
+    }
+    **/
+    @MutationMapping(value = "createUser")
+    fun createUser(
+        @Argument signUpIn: SignUpIn
+    ) = userRepository.save(signUpIn.toEntity(passwordEncoder))
+
+    /**
+    {
+        "query": "mutation ($userOid: ID!) { deleteUserByUserOid(userOid: $userOid) }",
+            "variables": {
+                "userOid": "Some UserOid"
+            }
+    }
+     **/
+    @MutationMapping(value = "deleteUserByUserOid")
+    fun deleteUserByUserOid(
+        @Argument userOid: Long
+    ) = userRepository.delete(userRepository.getByOid(userOid))
+
+    /**
+    {
+        "query": "mutation updateUserByUserOid($userOid: ID!, $userUpdateIn: UserUpdateIn!) { updateUserByUserOid(userOid: $userOid, userUpdateIn: $userUpdateIn) { oid, userId, name, email } }",
+            "variables": {
+                "userOid": "1",
+                "userUpdateIn": {
+                    "name": "NewName",
+                    "email": "newemail@example.com"
+            }
+        }
+    }
+    **/
+    @MutationMapping(value = "updateUserByUserOid")
+    fun updateUserByUserOid(
+        @Argument userOid: Long,
+        @Argument userUpdateIn: UserUpdateIn
+    ) {
+        val user = userRepository.getByOid(userOid)
+        user.updateWith(User.NewValue(
+            name = userUpdateIn.name,
+            email = userUpdateIn.email
+        ))
+    }
 }

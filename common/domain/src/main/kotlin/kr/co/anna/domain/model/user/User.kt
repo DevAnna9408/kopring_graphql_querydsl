@@ -68,28 +68,15 @@ class User(
         }
     }
 
-    fun changePassword(password: String) {
-        this.password = password
-    }
+    data class NewValue(
+        val name: String?,
+        val email: String?
+    )
 
     fun updateWith(n: NewValue) {
         if (!n.name.isNullOrBlank()) this.name = n.name
         if (!n.email.isNullOrBlank()) this.email = n.email
-        if (!n.password.isNullOrBlank()) this.password = n.password
-        this.status = n.status
-        this.roles = n.roles
-
     }
-
-    data class NewValue(
-        val name: String? = null,
-        val email: String? = null,
-        val password: String? = null,
-        val roles: MutableList<Role> = mutableListOf(Role.ROLE_USER),
-        var status: Status = Status.ACTIVE,
-        val failCnt: Int = 0,
-        val locked: Boolean = false
-    )
 
     fun checkActiveUser(): Boolean {
         return status().equals(Status.ACTIVE)

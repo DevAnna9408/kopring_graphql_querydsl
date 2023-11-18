@@ -12,6 +12,11 @@ input SignUpIn {
     password: String!
 }
 
+input UserUpdateIn {
+    name: String!,
+    email: String!
+}
+
 type Query {
     findAllUsers: [User],
     findByUserId(userId: String!): User
@@ -19,5 +24,6 @@ type Query {
 
 type Mutation {
     createUser(signUpIn: SignUpIn): User,
-    deleteUserByUserOid(userOid: ID!): Boolean
+    deleteUserByUserOid(userOid: ID!): Boolean,
+    updateUserByUserOid(userOid: ID!, userUpdateIn: UserUpdateIn!): User
 }

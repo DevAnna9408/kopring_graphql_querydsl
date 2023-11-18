@@ -1,8 +1,5 @@
 package kr.co.anna.api.config
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import kr.co.anna.api.interceptor.PersonalInfoLoggingInterceptor
-import kr.co.anna.domain.repository.log.QueryLogRepository
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
