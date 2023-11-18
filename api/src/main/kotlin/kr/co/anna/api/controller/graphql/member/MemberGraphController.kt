@@ -10,6 +10,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Transactional
+import javax.validation.Valid
 
 /**
  * Url: http://localhost:8080/graphql
@@ -32,6 +33,20 @@ class MemberGraphController (
      **/
     @QueryMapping(value = "findAllUsers")
     fun findAllUsers(): List<User> = userRepository.findAll()
+
+    /**
+    {
+        "query": "query ($userId: String!) {
+            findByUserId(userId: $userId) { oid, userId, name, email } }",
+                "variables": {
+                    "userId": "userId"
+                }
+    }
+     **/
+    @QueryMapping(value = "findByUserId")
+    fun findByUserId(
+        @Argument userId: String
+    ) = userRepository.findByUserId(userId).get()
 
     /**
     {
