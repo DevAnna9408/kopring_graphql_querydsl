@@ -1,4 +1,4 @@
-package kr.co.anna.api.controller.user
+package kr.co.anna.api.controller.restapi.user
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag

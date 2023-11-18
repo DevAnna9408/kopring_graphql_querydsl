@@ -11,6 +11,12 @@ spring:
       matching-strategy: ant_path_matcher
   main:
     allow-bean-definition-overriding: true
+  graphql:
+    graphiql:
+      enabled: true
+    schema:
+      printer:
+        enabled: true
 
 jwt:
   base64EncodedSecret: eyJzdWIiOiJ0b2RheURpbm5lciIsIm5hbWUiOiJEZXZBbm5hIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0
