@@ -12,9 +12,6 @@ import org.springframework.context.annotation.Configuration
  */
 @Configuration
 @EnableCaching
-class CacheConfig {
-}
-
 class CacheLogger : CacheEventListener<Any, Any> {
 
     private val log = LoggerFactory.getLogger(javaClass)

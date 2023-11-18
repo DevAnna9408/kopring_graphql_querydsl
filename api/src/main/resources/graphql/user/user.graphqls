@@ -5,6 +5,18 @@ type User {
     email: String!
 }
 
+enum Role {
+    ROLE_USER
+    ROLE_MANAGER
+    ROLE_SYS_ADMIN
+}
+
+enum Status {
+    ACTIVE
+    WITHDRAW
+    INACTIVE
+}
+
 input SignUpIn {
     userId: String!,
     name: String!,
@@ -18,8 +30,8 @@ input UserUpdateIn {
 }
 
 type Query {
-    findAllUsers: [User],
-    getByUserId(userId: String!): User
+    findAllUsers: [User!],
+    getByUserId(userId: String!): User!
 }
 
 type Mutation {

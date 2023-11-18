@@ -35,8 +35,7 @@ import javax.servlet.http.HttpServletResponse
 @EnableWebSecurity
 @EnableConfigurationProperties(JwtProperties::class)
 class SecurityConfig(
-    private val jwtProcessor: JwtProcessor,
-    private val userRepository: UserRepository,
+    private val jwtProcessor: JwtProcessor
 ) {
 
     @Bean
