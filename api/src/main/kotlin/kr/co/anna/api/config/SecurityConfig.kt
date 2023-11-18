@@ -60,9 +60,6 @@ class SecurityConfig(
             .antMatchers(HttpMethod.GET, *signAllowedList()).permitAll()
             .antMatchers(HttpMethod.POST, *signAllowedList()).permitAll()
             .antMatchers(HttpMethod.PUT, *signAllowedList()).permitAll()
-            .antMatchers(HttpMethod.GET, *findAllowedList()).permitAll()
-            .antMatchers(HttpMethod.PATCH, *changeAllowedList()).permitAll()
-            .antMatchers(HttpMethod.GET, *checkAllowedList()).permitAll()
             .antMatchers(HttpMethod.GET, *commCodeAllowedList()).permitAll()
             .antMatchers(*sysAdminAllowedList()).hasAnyRole("SYS_ADMIN")
             .anyRequest().authenticated()
@@ -130,22 +127,7 @@ class SecurityConfig(
     private fun signAllowedList(): Array<String> {
         return arrayOf(
             "/api/sign-up",
-            "/api/sign-in",
-            "/api/find-password",
-            "/api/answer-password",
-            "/api/change-password/**",
-        )
-    }
-
-    private fun findAllowedList(): Array<String> {
-        return arrayOf(
-            "/api/find/password"
-        )
-    }
-
-    private fun changeAllowedList(): Array<String> {
-        return arrayOf(
-            "/api/{userId}/change-password-after-find"
+            "/api/sign-in"
         )
     }
 
@@ -171,16 +153,9 @@ class SecurityConfig(
         )
     }
 
-    private fun checkAllowedList(): Array<String> {
-        return arrayOf(
-            "/api/sign-up/check",
-        )
-    }
-
     private fun sysAdminAllowedList(): Array<String> {
         return arrayOf(
             "/api/admin/**",
         )
     }
-
 }
