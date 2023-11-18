@@ -1,9 +1,4 @@
-schema {
-    query: Query,
-    mutation: Mutation
-}
-
-type UserOut {
+type User {
     oid: ID!,
     userId: String!,
     name: String!,
@@ -18,11 +13,11 @@ input SignUpIn {
 }
 
 type Query {
-    findAllUsers: [UserOut],
-    findByUserId(userId: String!): UserOut
+    findAllUsers: [User],
+    findByUserId(userId: String!): User
 }
 
 type Mutation {
-    createUser(signUpIn: SignUpIn): UserOut,
+    createUser(signUpIn: SignUpIn): User,
     deleteUserByUserOid(userOid: ID!): Boolean
 }

@@ -17,6 +17,8 @@ spring:
     schema:
       printer:
         enabled: true
+      locations: classpath:graphql/**/
+      file-extensions: .graphqls, .ggls
 
 jwt:
   base64EncodedSecret: eyJzdWIiOiJ0b2RheURpbm5lciIsIm5hbWUiOiJEZXZBbm5hIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0
