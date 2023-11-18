@@ -31,7 +31,7 @@ class MemberGraphController (
         "query": "{ findAllUsers { oid userId name email } }"
     }
      **/
-    @QueryMapping(value = "findAllUsers")
+    @QueryMapping
     fun findAllUsers(): List<User> = userRepository.findAll()
 
     /**
@@ -43,7 +43,7 @@ class MemberGraphController (
                 }
     }
      **/
-    @QueryMapping(value = "findByUserId")
+    @QueryMapping
     fun findByUserId(
         @Argument userId: String
     ) = userRepository.findByUserId(userId).get()
@@ -61,7 +61,7 @@ class MemberGraphController (
         }
     }
     **/
-    @MutationMapping(value = "createUser")
+    @MutationMapping
     fun createUser(
         @Argument signUpIn: SignUpIn
     ) = userRepository.save(signUpIn.toEntity(passwordEncoder))
@@ -74,7 +74,7 @@ class MemberGraphController (
             }
     }
      **/
-    @MutationMapping(value = "deleteUserByUserOid")
+    @MutationMapping
     fun deleteUserByUserOid(
         @Argument userOid: Long
     ) = userRepository.delete(userRepository.getByOid(userOid))
@@ -91,7 +91,7 @@ class MemberGraphController (
         }
     }
     **/
-    @MutationMapping(value = "updateUserByUserOid")
+    @MutationMapping
     fun updateUserByUserOid(
         @Argument userOid: Long,
         @Argument userUpdateIn: UserUpdateIn
