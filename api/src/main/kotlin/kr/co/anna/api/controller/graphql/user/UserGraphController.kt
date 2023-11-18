@@ -1,4 +1,4 @@
-package kr.co.anna.api.controller.graphql.member
+package kr.co.anna.api.controller.graphql.user
 
 import kr.co.anna.api.dto.user.SignUpIn
 import kr.co.anna.api.dto.user.UserUpdateIn
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional
  * **/
 @Controller
 @Transactional
-class MemberGraphController (
+class UserGraphController (
 
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder

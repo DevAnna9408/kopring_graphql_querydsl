@@ -25,9 +25,9 @@ class SignController(
 ) {
     @Operation(summary = "회원 가입")
     @PostMapping("/sign-up")
-    fun createMember(@RequestBody signUpIn: SignUpIn): ResponseEntity<UserOut> {
-        val memberOut = userCommandService.createUser(signUpIn)
-        return ResponseEntity.ok(memberOut)
+    fun createUser(@RequestBody signUpIn: SignUpIn): ResponseEntity<UserOut> {
+        val userOut = userCommandService.createUser(signUpIn)
+        return ResponseEntity.ok(userOut)
     }
 
     @Operation(summary = "로그인")
