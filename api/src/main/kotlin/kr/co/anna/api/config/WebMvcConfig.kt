@@ -13,20 +13,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
  * 현재는 interceptor 설정만 있으나 이 외에도 여러가지 설정 가능
  */
 @Configuration
-class WebMvcConfig(
-    private val queryLogRepository: QueryLogRepository,
-    private val om: ObjectMapper,
-) : WebMvcConfigurer {
+class WebMvcConfig() : WebMvcConfigurer {
 
     override fun addInterceptors(registry: InterceptorRegistry) {
 
-        //로깅
-        val logInterceptor = PersonalInfoLoggingInterceptor(queryLogRepository, om)
-        registry.addInterceptor(logInterceptor)
-            .addPathPatterns(
-                *logInterceptor.queryTargetUris().toTypedArray(),
-                *logInterceptor.downloadTargetUris().toTypedArray(),
-                "/api/admin/**",  // PathVariable 사용하는 경우 별도로 /** 추가 필요
-            )
     }
 }

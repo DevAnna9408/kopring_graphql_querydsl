@@ -17,10 +17,7 @@ import javax.servlet.http.HttpServletResponse
  * TODO: 프로젝트에 맞게 변경필요
  * CustomServletWrapperFilter 참고
  */
-class PersonalInfoLoggingInterceptor(
-    private val queryLogRepository: QueryLogRepository,
-    private val om: ObjectMapper,
-) : HandlerInterceptor {
+class PersonalInfoLoggingInterceptor() : HandlerInterceptor {
 
 
     override fun postHandle(
@@ -29,56 +26,5 @@ class PersonalInfoLoggingInterceptor(
         handler: Any,
         modelAndView: ModelAndView?
     ) {
-        val wrappingResponse = response as ContentCachingResponseWrapper
-        try {
-            val currentUserId = SecurityUtil.currentUserId()
-            val requestURI = request.requestURI
-            for (apiUri in queryTargetUris()) {
-                if (request.method == HttpMethod.GET.name && requestURI.contains(apiUri) && response.status >= 200 && response.status < 300) {
-                        val queryLog = QueryLog(
-                            url = requestURI,
-                            userId = currentUserId,
-                            action = QueryLog.Action.QUERY,
-                        )
-                        queryLogRepository.save(
-                            queryLog
-                        )
-                }
-            }
-            for (apiUri in downloadTargetUris()) {
-                if (request.method == HttpMethod.GET.name && requestURI.contains(apiUri) && response.status >= 200 && response.status < 300) {
-                    /*val jsonNode: JsonNode = om.readTree(wrappingResponse.contentAsByteArray)
-                    val applIds = jsonNode.findValues("applId")*/
-                    /* if (applIds.isNotEmpty()) {*/
-                        val queryLog = QueryLog(
-                            url = requestURI,
-                            userId = currentUserId,
-                            action = QueryLog.Action.DOWNLOAD,
-                        )
-                        queryLogRepository.save(
-                            queryLog
-                        )
-                 /*   }*/
-                }
-            }
-        } catch (t: Throwable) {
-            log.error("Query Log 에러", t)
-        }
-        wrappingResponse.copyBodyToResponse()
     }
-
-
-    fun queryTargetUris(): List<String> {
-        return listOf(
-            "/api/admin/users/all"
-        )
-    }
-
-    fun downloadTargetUris(): List<String> {
-        return listOf(
-            "/api/admin/down/excel"
-        )
-    }
-
-    private val log = LoggerFactory.getLogger(javaClass)
 }

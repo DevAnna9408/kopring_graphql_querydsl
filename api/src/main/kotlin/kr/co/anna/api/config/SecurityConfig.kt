@@ -1,7 +1,6 @@
 package kr.co.anna.api.config
 
 import kr.co.anna.domain.repository.user.UserRepository
-import kr.co.anna.lib.security.UserDetailsServiceImpl
 import kr.co.anna.lib.security.jwt.JwtAuthFilter
 import kr.co.anna.lib.security.jwt.JwtProcessor
 import kr.co.anna.lib.security.jwt.JwtProperties
@@ -11,14 +10,14 @@ import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpMethod
 import org.springframework.security.access.AccessDeniedException
 import org.springframework.security.authentication.AuthenticationManager
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.core.AuthenticationException
 import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.AuthenticationEntryPoint
+import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.access.AccessDeniedHandler
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter
@@ -26,9 +25,9 @@ import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.CorsUtils
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
-import org.springframework.web.servlet.HandlerExceptionResolver
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
+
 
 /**
  * 스프링 시큐리티 설정
@@ -38,12 +37,13 @@ import javax.servlet.http.HttpServletResponse
 class SecurityConfig(
     private val jwtProcessor: JwtProcessor,
     private val userRepository: UserRepository,
-) : WebSecurityConfigurerAdapter() {
+) {
 
     /**
      * 규칙설정
      */
-    override fun configure(http: HttpSecurity) {
+    @Bean
+    fun filterChain(http: HttpSecurity) : SecurityFilterChain {
         http
             .cors().configurationSource(corsConfigurationSource())
             .and()
@@ -72,7 +72,7 @@ class SecurityConfig(
             .and()
             .headers()
             .addHeaderWriter(XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
-
+        return http.build()
     }
 
     class JwtAuthenticationEntryPoint() : AuthenticationEntryPoint {
@@ -117,18 +117,21 @@ class SecurityConfig(
         return source
     }
 
-    /**
-     * 로그인 인증처리
-     */
-    override fun configure(auth: AuthenticationManagerBuilder) {
-        auth
-            .userDetailsService(UserDetailsServiceImpl(userRepository))
-            .passwordEncoder(passwordEncoder())
-    }
+//    /**
+//     * 로그인 인증처리
+//     */
+//    @Bean
+//    fun configure(auth: AuthenticationManagerBuilder) {
+//        auth
+//            .userDetailsService(UserDetailsServiceImpl(userRepository))
+//            .passwordEncoder(passwordEncoder())
+//    }
 
     @Bean
-    override fun authenticationManagerBean(): AuthenticationManager {
-        return super.authenticationManagerBean()
+    fun authenticationManager(
+        authenticationConfiguration: AuthenticationConfiguration
+    ): AuthenticationManager? {
+        return authenticationConfiguration.authenticationManager
     }
 
 

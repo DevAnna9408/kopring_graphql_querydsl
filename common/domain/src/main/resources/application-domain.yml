@@ -13,6 +13,11 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  main:
+    allow-bean-definition-overriding: true
 
 --- # develop
 spring:
@@ -20,7 +25,7 @@ spring:
     activate:
       on-profile: "develop"
   datasource:
-    url: jdbc:mysql://localhost:3306/anna_database_test?characterEncoding=UTF-8&serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://localhost:3306/anna_dev?characterEncoding=UTF-8&serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull
     username: root
     password: admin
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -33,9 +38,3 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-
---- # initdb
-spring:
-  config:
-    activate:
-      on-profile: "initdb"

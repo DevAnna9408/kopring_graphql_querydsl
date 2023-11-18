@@ -1,5 +1,0 @@
---- # develop
-spring:
-  config:
-    activate:
-      on-profile: develop
