@@ -1,0 +1,8 @@
+${AnsiColor.BRIGHT_RED}   .   ____          _            __ _ _
+${AnsiColor.BRIGHT_RED}  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+${AnsiColor.BRIGHT_RED} ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+${AnsiColor.BRIGHT_RED}  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+${AnsiColor.BRIGHT_RED}   '  |____| .__|_| |_|_| |_\__, | / / / /
+${AnsiColor.BRIGHT_RED}  =========|_|==============|___/=/_/_/_/
+${AnsiColor.BRIGHT_BLUE}:: made by Anna :: Running Spring Boot ${spring-boot.version} ::
+
