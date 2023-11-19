@@ -46,15 +46,14 @@ dependencies {
 
     // jackson
     implementation("com.fasterxml.jackson.core:jackson-annotations")
+
+    //Servlet
     implementation("javax.servlet:javax.servlet-api")
 
     // JWT
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
-
-    // lombok
-    annotationProcessor ("org.projectlombok:lombok")
 
 }
 
