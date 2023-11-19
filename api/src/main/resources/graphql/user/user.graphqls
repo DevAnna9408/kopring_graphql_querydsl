@@ -1,7 +1,7 @@
 type User {
-    oid: ID!,
-    userId: String!,
-    name: String!,
+    oid: ID!
+    userId: String!
+    name: String!
     email: String!
 }
 
@@ -18,14 +18,14 @@ enum Status {
 }
 
 input SignUpIn {
-    userId: String!,
-    name: String!,
-    email: String!,
+    userId: String!
+    name: String!
+    email: String!
     password: String!
 }
 
 input UserUpdateIn {
-    name: String!,
+    name: String!
     email: String!
 }
 
