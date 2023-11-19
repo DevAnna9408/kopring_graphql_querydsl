@@ -45,6 +45,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+    // p6spy
+    implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0")
+
     // Database
     runtimeOnly("mysql:mysql-connector-java")
     runtimeOnly("com.h2database:h2")

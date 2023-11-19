@@ -57,9 +57,6 @@ dependencies {
     implementation("org.ehcache:ehcache:3.9.5")
     implementation("javax.cache:cache-api:1.1.1")
 
-    // p6spy
-    implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0")
-
     // GraphQl
     implementation("org.springframework.boot:spring-boot-starter-graphql")
 
