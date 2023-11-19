@@ -65,6 +65,7 @@ dependencies {
 
     // GraphQl
     implementation("org.springframework.boot:spring-boot-starter-graphql")
+    implementation("com.graphql-java-kickstart:playground-spring-boot-starter:5.10.0")
 
 }
 
