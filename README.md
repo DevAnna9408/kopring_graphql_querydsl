@@ -1,5 +1,9 @@
 # Kopring + GrapqhQl + QueryDsl ver.1 by anna ver 1.0
 
+[Swagger](http://localhost:8080/swagger-ui/index.html)
+
+[PlayGround](http://localhost:8080/playground)
+
 ### Version
 - Spring boot ver 2.5.4 -> 2.7.7 
 - Gradle ver 6.9.1 -> 7.4.1
