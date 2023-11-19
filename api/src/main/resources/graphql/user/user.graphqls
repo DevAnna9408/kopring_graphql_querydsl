@@ -37,5 +37,5 @@ type Query {
 type Mutation {
     createUser(signUpIn: SignUpIn): User,
     deleteUserByUserOid(userOid: ID!): Boolean,
-    updateUserByUserOid(userOid: ID!, userUpdateIn: UserUpdateIn!): User
+    updateUserByUserOid(userOid: ID!, userUpdateIn: UserUpdateIn!): Boolean
 }
