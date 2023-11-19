@@ -6,14 +6,8 @@ spring:
   servlet.multipart:
     max-file-size:  20MB
     max-request-size:  20MB
-  graphql:
-    graphiql:
-      enabled: true
-    schema:
-      printer:
-        enabled: true
-      locations: classpath:graphql/**/
-      file-extensions: .graphqls, .ggls
+  main:
+    allow-bean-definition-overriding: true
 
 jwt:
   base64EncodedSecret: eyJzdWIiOiJ0b2RheURpbm5lciIsIm5hbWUiOiJEZXZBbm5hIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0

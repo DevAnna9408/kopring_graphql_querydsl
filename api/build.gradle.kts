@@ -64,8 +64,8 @@ dependencies {
     implementation("javax.cache:cache-api:1.1.1")
 
     // GraphQl
-    implementation("org.springframework.boot:spring-boot-starter-graphql")
-    implementation("com.graphql-java-kickstart:playground-spring-boot-starter:5.10.0")
+    implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:11.0.0")
+    implementation("com.graphql-java-kickstart:playground-spring-boot-starter:11.0.0")
 
 }
 

@@ -1,15 +1,16 @@
 package kr.co.anna.api.controller.graphql.user
 
+import graphql.kickstart.tools.GraphQLMutationResolver
+import graphql.kickstart.tools.GraphQLQueryResolver
 import kr.co.anna.api.dto.user.SignUpIn
 import kr.co.anna.api.dto.user.UserUpdateIn
 import kr.co.anna.domain.model.user.User
 import kr.co.anna.domain.repository.user.UserRepository
-import org.springframework.graphql.data.method.annotation.Argument
-import org.springframework.graphql.data.method.annotation.MutationMapping
-import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestParam
 
 /**
  * Url: http://localhost:8080/graphql
@@ -23,14 +24,13 @@ class UserGraphController (
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 
-        ) {
+        ) : GraphQLQueryResolver, GraphQLMutationResolver {
 
     /**
     {
-        "query": "{ findAllUsers { oid userId name email } }"
+    "query": "{ findAllUsers { oid userId name email } }"
     }
      **/
-    @QueryMapping
     fun findAllUsers(): List<User> = userRepository.findAll()
 
     /**
@@ -41,10 +41,10 @@ class UserGraphController (
             }
     }
      **/
-    @QueryMapping
     fun getByUserId(
-        @Argument userId: String
+        @RequestParam userId: String
     ) = userRepository.getByUserId(userId)
+
     /**
     {
         "query": "mutation ($signUpIn: SignUpIn!) { createUser(signUpIn: $signUpIn) { oid, userId, name, email } }",
@@ -58,9 +58,9 @@ class UserGraphController (
         }
     }
     **/
-    @MutationMapping
+
     fun createUser(
-        @Argument signUpIn: SignUpIn
+        @RequestBody signUpIn: SignUpIn
     ) = userRepository.save(signUpIn.toEntity(passwordEncoder))
 
     /**
@@ -71,9 +71,8 @@ class UserGraphController (
             }
     }
      **/
-    @MutationMapping
     fun deleteUserByUserOid(
-        @Argument userOid: Long
+        @RequestParam userOid: Long
     ) = userRepository.delete(userRepository.getByOid(userOid))
 
     /**
@@ -88,10 +87,9 @@ class UserGraphController (
         }
     }
     **/
-    @MutationMapping
     fun updateUserByUserOid(
-        @Argument userOid: Long,
-        @Argument userUpdateIn: UserUpdateIn
+        @RequestParam userOid: Long,
+        @RequestBody userUpdateIn: UserUpdateIn
     ) {
         val user = userRepository.getByOid(userOid)
         user.updateWith(User.NewValue(
