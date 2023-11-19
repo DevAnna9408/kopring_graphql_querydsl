@@ -6,11 +6,6 @@ spring:
   servlet.multipart:
     max-file-size:  20MB
     max-request-size:  20MB
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-  main:
-    allow-bean-definition-overriding: true
   graphql:
     graphiql:
       enabled: true
