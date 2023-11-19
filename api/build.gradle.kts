@@ -10,7 +10,7 @@ plugins {
     kotlin("plugin.jpa") version kotlinVersion
 }
 
-group = "kr.co.anna"
+group = "kr.co.anna.api"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
@@ -22,6 +22,12 @@ configurations {
 
 repositories {
     mavenCentral()
+}
+
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
 
 dependencies {
